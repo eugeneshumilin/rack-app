@@ -8,7 +8,13 @@ class CheckPath
   def call(env)
     request = Rack::Request.new(env)
     current_path = request.path_info
-    if PATH.include?(current_path)
+    # if PATH.include?(current_path)
+    #   @app.call(env)
+    # else
+    #   wrong_path
+    # end
+    case current_path
+    when PATH[0]
       @app.call(env)
     else
       wrong_path
